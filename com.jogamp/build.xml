@@ -92,6 +92,7 @@
 			<attribute name="Bundle-Version" value="${version}" />
 			<attribute name="Bundle-RequiredExecutionEnvironment" value="JavaSE-1.7" />
 			<attribute name="Bundle-ClassPath" value="${jar.list}" />
+    		<attribute name="Require-Bundle" value="org.eclipse.swt;bundle-version=&quot;3.102.0&quot;resolution:=optional" /><!--for swt binding-->
 			<attribute name="Export-Package" value="${packages.list}" />
     	</manifest>
 		<!--<jar destfile="${target.dir}/${org}.${base}.jar">
