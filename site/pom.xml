@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.caleydo.libs</groupId>
+		<artifactId>lib-parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>		
+	</parent>
+	<artifactId>lib-site</artifactId>
+	<packaging>pom</packaging>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.reficio</groupId>
+				<artifactId>p2-maven-plugin</artifactId>
+				<version>1.0.2-SNAPSHOT</version>
+				<executions>
+					<execution>
+						<id>default-cli</id>
+						<configuration>
+							<artifacts>
+								<artifact>
+									<id>net.sf.jgrapht:jgrapht:${jgrapht.version}</id>
+									<source>true</source>
+								</artifact>
+								<artifact>
+									<id>org.caleydo:pathvisio:${pathvisio.version}</id>
+								</artifact>
+								<artifact>
+									<id>com.jogamp:gluegen-rt:${jogl.version}</id>
+									<source>true</source>
+								</artifact>
+								<artifact><id>com.jogamp:gluegen-rt:linux-amd64-${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:gluegen-rt:linux-i586-${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:gluegen-rt:macosx-universal-${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:gluegen-rt:windows-amd64-${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:gluegen-rt:windows-i586-${jogl.version}</id></artifact>
+								<artifact>
+									<id>com.jogamp:jogl:${jogl.version}</id>
+									<source>true</source>
+								</artifact>
+								<artifact><id>com.jogamp:jogl:linux-amd64-${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:jogl:linux-i586-${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:jogl:macosx-universal-${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:jogl:windows-amd64-${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:jogl:windows-i586-${jogl.version}</id></artifact>
+								<artifact>
+									<id>com.jogamp:jocl:${jogl.version}</id>
+									<source>true</source>
+								</artifact>
+								<artifact><id>com.jogamp:jocl:linux-amd64-${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:jocl:linux-i586-${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:jocl:macosx-universal-${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:jocl:windows-amd64-${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:jocl:windows-i586-${jogl.version}</id></artifact>
+								<artifact>
+									<id>com.jogamp:joal:${jogl.version}</id>
+									<source>true</source>
+								</artifact>
+								<artifact><id>com.jogamp:joal:linux-amd64-${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:joal:linux-i586-${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:joal:macosx-universal-${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:joal:windows-amd64-${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:joal:windows-i586-${jogl.version}</id></artifact> -->
+							</artifacts>
+						</configuration>
+
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>zenlambda-releases</id>
+			<url>http://mvn-repo.zenlambda.com/releases</url>
+		</pluginRepository>
+	</pluginRepositories>
+</project>

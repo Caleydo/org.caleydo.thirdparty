@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.caleydo.libs</groupId>
-	<artifactId>libgenerator</artifactId>
+	<artifactId>lib-parent</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
@@ -13,118 +13,44 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<pathvisio.version>31.0.0</pathvisio.version>
 		<jogl.version>2.0.2</jogl.version>
+		<jgrapht.version>0.8.3</jgrapht.version>
 	</properties>
+	
+	<modules>
+		<module>com.jogamp</module>
+		<module>pathvisio</module>
+		<module>site</module>
+	</modules>
 
 	<build>
-		<plugins>
-			<!-- <plugin> <groupId>com.googlecode.maven-download-plugin</groupId> 
-				<artifactId>maven-download-plugin</artifactId> <version>1.1.0</version> <executions> 
-				<execution> <id>download jogamp</id> <phase>process-classes</phase> <goals> 
-				<goal>wget</goal> </goals> <configuration> <url>http://jogamp.org/deployment/jogamp-current/archive/jogamp-all-platforms.7z</url> 
-				<outputDirectory>${project.build.directory}</outputDirectory> </configuration> 
-				</execution> </executions> </plugin> <plugin> <groupId>com.zenlambda.maven</groupId> 
-				<artifactId>un7z-maven-plugin</artifactId> <version>0.0.1</version> <inherited>false</inherited> 
-				<executions> <execution> <phase>process-classes</phase> <goals> <goal>unpack</goal> 
-				</goals> </execution> </executions> <configuration> <srcArchive>${project.build.directory}/jogamp-all-platforms.7z</srcArchive> 
-				<destDir>${project.build.directory}</destDir> <failIfNotFound>true</failIfNotFound> 
-				<overwrite>false</overwrite> </configuration> </plugin> -->
-			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>1.7</version>
-				<executions>
-					<execution>
-						<id>create bundles</id>
-						<phase>process-classes</phase>
-						<configuration>
-							<failOnError>false</failOnError>
-							<target>
-								<ant antfile="build.xml" inheritAll="true"/>
-							</target>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>ant-contrib</groupId>
-						<artifactId>ant-contrib</artifactId>
-						<version>1.0b3</version>
-						<exclusions>
-							<exclusion>
-								<groupId>ant</groupId>
-								<artifactId>ant</artifactId>
-							</exclusion>
-						</exclusions>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.maven</groupId>
-						<artifactId>maven-ant-tasks</artifactId>
-						<version>2.1.3</version>
-					</dependency>
-				</dependencies>
-			</plugin>
-			<plugin>
-				<groupId>org.reficio</groupId>
-				<artifactId>p2-maven-plugin</artifactId>
-				<version>1.0.2-SNAPSHOT</version>
-				<executions>
-					<execution>
-						<id>default-cli</id>
-						<configuration>
-							<artifacts>
-								<artifact>
-									<id>net.sf.jgrapht:jgrapht:0.8.3</id>
-									<source>true</source>
-								</artifact>
-								<artifact>
-									<id>com.jogamp:gluegen-rt:${jogl.version}</id>
-									<source>true</source>
-								</artifact>
-								<!-- <artifact>
-									<id>org.caleydo:pathvisio:31.0.0</id>
-								</artifact>
-								<artifact><id>com.jogamp:gluegen-rt:linux-amd64-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:gluegen-rt:linux-i586-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:gluegen-rt:macosx-universal-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:gluegen-rt:windows-amd64-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:gluegen-rt:windows-i586-${jogl.version}</id></artifact>
-								<artifact>
-									<id>com.jogamp:jogl:${jogl.version}</id>
-									<source>true</source>
-								</artifact>
-								<artifact><id>com.jogamp:jogl:linux-amd64-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:jogl:linux-i586-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:jogl:macosx-universal-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:jogl:windows-amd64-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:jogl:windows-i586-${jogl.version}</id></artifact>
-								<artifact>
-									<id>com.jogamp:jocl:${jogl.version}</id>
-									<source>true</source>
-								</artifact>
-								<artifact><id>com.jogamp:jocl:linux-amd64-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:jocl:linux-i586-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:jocl:macosx-universal-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:jocl:windows-amd64-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:jocl:windows-i586-${jogl.version}</id></artifact>
-								<artifact>
-									<id>com.jogamp:joal:${jogl.version}</id>
-									<source>true</source>
-								</artifact>
-								<artifact><id>com.jogamp:joal:linux-amd64-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:joal:linux-i586-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:joal:macosx-universal-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:joal:windows-amd64-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:joal:windows-i586-${jogl.version}</id></artifact> -->
-							</artifacts>
-						</configuration>
-
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>1.7</version>
+					<dependencies>
+						<dependency>
+							<groupId>ant-contrib</groupId>
+							<artifactId>ant-contrib</artifactId>
+							<version>1.0b3</version>
+							<exclusions>
+								<exclusion>
+									<groupId>ant</groupId>
+									<artifactId>ant</artifactId>
+								</exclusion>
+							</exclusions>
+						</dependency>
+						<dependency>
+							<groupId>org.apache.maven</groupId>
+							<artifactId>maven-ant-tasks</artifactId>
+							<version>2.1.3</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 
 	<repositories>
