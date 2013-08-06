@@ -3,10 +3,10 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Pathvisio
 Bundle-SymbolicName: org.caleydo.pathvisio
 Bundle-Version: 31.0.0
-Bundle-ClassPath: org.bridgedb.jar,
- org.pathvisio.core.jar,
- com.springsource.org.jdom-1.1.0.jar,
- org.bridgedb.bio.jar
+Bundle-ClassPath: jars/org.bridgedb.jar,
+ jars/org.pathvisio.core.jar,
+ jars/com.springsource.org.jdom-1.1.0.jar,
+ jars/org.bridgedb.bio.jar
 Export-Package: org.bridgedb,
  org.pathvisio.core.debug,
  org.pathvisio.core.model,

@@ -19,7 +19,10 @@
 				<executions>
 					<execution>
 						<id>build-site</id>
-						<phase>verify</phase>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>site</goal>
+						</goals>
 						<configuration>
 							<artifacts>
 								<artifact>
@@ -33,38 +36,39 @@
 									<id>com.jogamp:gluegen-rt:${jogl.version}</id>
 									<source>true</source>
 								</artifact>
-								<artifact><id>com.jogamp:gluegen-rt:linux-amd64-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:gluegen-rt:linux-i586-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:gluegen-rt:macosx-universal-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:gluegen-rt:windows-amd64-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:gluegen-rt:windows-i586-${jogl.version}</id></artifact>
+								<!-- <groupId>:<artifactId>[:<extension>[:<classifier>]]:<version> -->
+								<artifact><id>com.jogamp:gluegen-rt:jar:linux-amd64:${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:gluegen-rt:jar:linux-i586:${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:gluegen-rt:jar:macosx-universal:${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:gluegen-rt:jar:windows-amd64:${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:gluegen-rt:jar:windows-i586:${jogl.version}</id></artifact>
 								<artifact>
 									<id>com.jogamp:jogl:${jogl.version}</id>
 									<source>true</source>
 								</artifact>
-								<artifact><id>com.jogamp:jogl:linux-amd64-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:jogl:linux-i586-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:jogl:macosx-universal-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:jogl:windows-amd64-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:jogl:windows-i586-${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:jogl:jar:linux-amd64:${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:jogl:jar:linux-i586:${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:jogl:jar:macosx-universal:${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:jogl:jar:windows-amd64:${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:jogl:jar:windows-i586:${jogl.version}</id></artifact>
 								<artifact>
 									<id>com.jogamp:jocl:${jogl.version}</id>
 									<source>true</source>
 								</artifact>
-								<artifact><id>com.jogamp:jocl:linux-amd64-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:jocl:linux-i586-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:jocl:macosx-universal-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:jocl:windows-amd64-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:jocl:windows-i586-${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:jocl:jar:linux-amd64:${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:jocl:jar:linux-i586:${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:jocl:jar:macosx-universal:${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:jocl:jar:windows-amd64:${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:jocl:jar:windows-i586:${jogl.version}</id></artifact>
 								<artifact>
 									<id>com.jogamp:joal:${jogl.version}</id>
 									<source>true</source>
 								</artifact>
-								<artifact><id>com.jogamp:joal:linux-amd64-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:joal:linux-i586-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:joal:macosx-universal-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:joal:windows-amd64-${jogl.version}</id></artifact>
-								<artifact><id>com.jogamp:joal:windows-i586-${jogl.version}</id></artifact> -->
+								<artifact><id>com.jogamp:joal:jar:linux-amd64:${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:joal:jar:linux-i586:${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:joal:jar:macosx-universal:${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:joal:jar:windows-amd64:${jogl.version}</id></artifact>
+								<artifact><id>com.jogamp:joal:jar:windows-i586:${jogl.version}</id></artifact>
 							</artifacts>
 						</configuration>
 					</execution>

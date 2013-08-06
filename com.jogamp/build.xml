@@ -44,7 +44,7 @@
 					<attribute name="Bundle-Name" value="${org}.${base}-@{os}-@{arch}" />
 					<attribute name="Bundle-SymbolicName" value="${org}.${base}-@{os}-@{arch};singleton:=true" />
 					<attribute name="Bundle-Version" value="${version}" />
-					<attribute name="Fragment-Host" value="${org}.${base};bundle-version=&quot;@{version}&quot;" />
+					<attribute name="Fragment-Host" value="${org}.${base};bundle-version=&quot;${version}&quot;" />
 					<attribute name="Bundle-RequiredExecutionEnvironment" value="JavaSE-1.7" />
 					<attribute name="Eclipse-PlatformFilter" value="(&amp; (osgi.os=@{osfilter}) (osgi.arch=@{archfilter}))" />
 					<attribute name="Bundle-NativeCode" value="${${base}-@{os}-@{arch}.native}" />
@@ -99,7 +99,7 @@
 				<attribute name="Bundle-ManifestVersion" value="2" />
 				<attribute name="Bundle-Name" value="${org}.${base}" />
 				<attribute name="Bundle-SymbolicName" value="${org}.${base}" />
-				<attribute name="Bundle-Version" value="@{version}" />
+				<attribute name="Bundle-Version" value="${version}" />
 				<attribute name="Bundle-RequiredExecutionEnvironment" value="JavaSE-1.7" />
 				<attribute name="Bundle-ClassPath" value="${${base}.jar}" />
 				<attribute name="Export-Package" value="${${base}.packages}" />
