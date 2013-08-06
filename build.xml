@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     06.08.2013 10:34:31                                                        
+
+     project    
+     description
+                   
+     Samuel Gratzl                                                                
+     ====================================================================== -->
+<project name="project" default="generate">
+	<description>
+            description
+    </description>
+
+	<property name="target.dir" location="target" />
+	<mkdir dir="${target.dir}" />
+
+	<!-- = = = = = = = = = = = = = = = = =
+          macrodef: generate          
+         = = = = = = = = = = = = = = = = = -->
+	<macrodef name="generatefragment">
+		<attribute name="org" />
+		<attribute name="base" />
+		<attribute name="os" />
+		<attribute name="arch" />
+		<attribute name="osfilter" />
+		<attribute name="archfilter" />
+		<attribute name="version" />
+		<attribute name="includes" default="*@{base}*" />
+		<sequential>
+			<copy todir="${target.dir}/@{org}.@{base}-@{os}-@{arch}">
+				<fileset dir="jogamp-all-platforms/lib/@{os}-@{arch}" includes="@{includes}" />
+				<flattenmapper />
+			</copy>
+			<pathconvert property="@{base}-@{os}-@{arch}.native" pathsep=",\">
+				<fileset dir="${target.dir}/@{org}.@{base}-@{os}-@{arch}" includes="@{includes}" />
+				<flattenmapper />
+			</pathconvert>
+			<pathconvert property="@{base}-@{os}-@{arch}.native2" pathsep=";">
+				<fileset dir="${target.dir}/@{org}.@{base}-@{os}-@{arch}" includes="@{includes}" />
+				<flattenmapper />
+			</pathconvert>
+			<copy todir="${target.dir}/@{org}.@{base}-@{os}-@{arch}" overwrite="true">
+				<fileset dir="template" />
+				<filterchain>
+					<replacetokens>
+						<token key="BASE" value="@{org}.@{base}" />
+						<token key="OS" value="@{os}" />
+						<token key="ARCH" value="@{arch}" />
+						<token key="OSFILTER" value="@{osfilter}" />
+						<token key="ARCHFILTER" value="@{archfilter}" />
+						<token key="VERSION" value="@{version}" />
+						<token key="NATIVE" value="${@{base}-@{os}-@{arch}.native}" />
+						<token key="NATIVE2" value="${@{base}-@{os}-@{arch}.native2}" />
+					</replacetokens>
+				</filterchain>
+			</copy>
+		</sequential>
+	</macrodef>
+
+	<!-- = = = = = = = = = = = = = = = = =
+          macrodef: generatefragments          
+         = = = = = = = = = = = = = = = = = -->
+	<macrodef name="generatefragments">
+		<attribute name="org" />
+		<attribute name="base" />
+		<attribute name="version" />
+		<attribute name="includes" default="*@{base}*" />
+
+		<sequential>
+			<generatefragment org="@{org}" base="@{base}" version="@{version}" os="linux" arch="amd64" osfilter="linux" archfilter="x86_64" includes="@{includes}" />
+			<generatefragment org="@{org}" base="@{base}" version="@{version}" os="linux" arch="i586" osfilter="linux" archfilter="x86" includes="@{includes}" />
+			<generatefragment org="@{org}" base="@{base}" version="@{version}" os="macosx" arch="universal" osfilter="macosx" archfilter="x86_64" includes="@{includes}" />
+			<generatefragment org="@{org}" base="@{base}" version="@{version}" os="windows" arch="amd64" osfilter="win32" archfilter="x86_64" includes="@{includes}" />
+			<generatefragment org="@{org}" base="@{base}" version="@{version}" os="windows" arch="i586" osfilter="win32" archfilter="x86" includes="@{includes}" />
+		</sequential>
+	</macrodef>
+
+
+
+	<!-- ================================= 
+          target: generate              
+         ================================= -->
+	<target name="generate" description="description">
+		<generatefragments org="com.jogamp" base="gluegen-rt" version="2.0.2" />
+		<generatefragments org="com.jogamp" base="jogl" version="2.0.2" includes="*jogl_desktop.*,*nativewindow*,*newt*"/>
+		<generatefragments org="com.jogamp" base="joal" version="2.0.2" includes="*joal*,*openal*"/>
+		<generatefragments org="com.jogamp" base="jocl" version="2.0.2" includes="*jocl*"/>
+	</target>
+
+</project>

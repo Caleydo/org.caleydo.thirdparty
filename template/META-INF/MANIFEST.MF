@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: @BASE@-@OS@-@ARCH@
+Bundle-SymbolicName: @BASE@-@OS@-@ARCH@;singleton:=true
+Bundle-Version: @VERSION@.qualifier
+Fragment-Host: @BASE@;bundle-version="@VERSION@"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Eclipse-PlatformFilter: (& (osgi.os=@OSFILTER@) (osgi.arch=@ARCHFILTER@))
+Bundle-NativeCode: @NATIVE2@
