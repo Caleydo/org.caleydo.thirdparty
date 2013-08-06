@@ -22,6 +22,7 @@
 						<phase>process-resources</phase>
 						<configuration>
 							<target>
+								<property name="required.bundles" value="${project.groupId}.gluegen-rt;bundle-version=&quot;${project.version}&quot;;visibility:=reexport" />
 								<ant antfile="../build.xml" inheritAll="true" inheritRefs="true"/>
 								<attachartifact file="${project.build.directory}/${project.groupId}.${project.artifactId}-sources.jar" classifier="sources"/>
 	    						<attachartifact file="${project.build.directory}/${project.groupId}.${project.artifactId}-linux-amd64.jar" classifier="linux-amd64"/>

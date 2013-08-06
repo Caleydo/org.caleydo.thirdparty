@@ -25,6 +25,7 @@
 								<property name="includes" value="*jogl_desktop.*,*nativewindow*,*newt*" />
 								<property name="includesjar" value="jogl-all.jar" />
 								<property name="excludepackages" value="**/jogamp/nativewindow/**,jogamp/opengl/**,jogamp/newt/driver/**" />
+								<property name="required.bundles" value="${project.groupId}.gluegen-rt;bundle-version=&quot;${project.version}&quot;;visibility:=reexport,org.eclipse.swt;bundle-version=&quot;3.102.0&quot;;resolution:=optional" /><!--for swt binding-->
 								<ant antfile="../build.xml" inheritAll="true" inheritRefs="true"/>
 								<attachartifact file="${project.build.directory}/${project.groupId}.${project.artifactId}-sources.jar" classifier="sources"/>
 	    						<attachartifact file="${project.build.directory}/${project.groupId}.${project.artifactId}-linux-amd64.jar" classifier="linux-amd64"/>
