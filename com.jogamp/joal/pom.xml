@@ -8,7 +8,7 @@
 		<version>2.0.2</version>		
 	</parent>
 	<groupId>com.jogamp</groupId>
-	<artifactId>gluegen-rt</artifactId>
+	<artifactId>joal</artifactId>
 	<packaging>jar</packaging>
 
 	<build>
@@ -19,13 +19,17 @@
 				<executions>
 					<execution>
 						<id>create bundles</id>
-						<phase>process-classes</phase>
+						<phase>process-resources</phase>
 						<configuration>
-							<failOnError>false</failOnError>
 							<target>
-								<property name="artifactId" value="${artifactId}" />
 								<property name="includes" value="*joal*,*openal*" />
 								<ant antfile="../build.xml" inheritAll="true" inheritRefs="true"/>
+								<attachartifact file="${project.build.directory}/${project.groupId}.${project.artifactId}-sources.jar" classifier="sources"/>
+	    						<attachartifact file="${project.build.directory}/${project.groupId}.${project.artifactId}-linux-amd64.jar" classifier="linux-amd64"/>
+	    						<attachartifact file="${project.build.directory}/${project.groupId}.${project.artifactId}-linux-i586.jar" classifier="linux-i586"/>
+	    						<attachartifact file="${project.build.directory}/${project.groupId}.${project.artifactId}-macosx-universal.jar" classifier="macosx-universal"/>
+	    						<attachartifact file="${project.build.directory}/${project.groupId}.${project.artifactId}-windows-amd64.jar" classifier="windows-amd64"/>
+	    						<attachartifact file="${project.build.directory}/${project.groupId}.${project.artifactId}-windows-i586.jar" classifier="windows-i586"/>
 							</target>
 						</configuration>
 						<goals>
@@ -33,6 +37,15 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+            			<manifestFile>${project.build.directory}/package/META-INF/MANIFEST.MF</manifestFile>
+          			</archive>
+					<classesDirectory>${project.build.directory}/package</classesDirectory>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

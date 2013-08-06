@@ -16,6 +16,7 @@
 		<pathvisio.version>31.0.0</pathvisio.version>
 		<jogl.version>2.0.2</jogl.version>
 		<jgrapht.version>0.8.3</jgrapht.version>
+		<skipTests>true</skipTests>
 	</properties>
 	
 	<modules>
@@ -24,7 +25,7 @@
 		<module>site</module>
 	</modules>
 
-	<build>
+	<build>	
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -48,6 +49,10 @@
 							<version>2.1.3</version>
 						</dependency>
 					</dependencies>
+				</plugin>					
+				<plugin>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.4</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>

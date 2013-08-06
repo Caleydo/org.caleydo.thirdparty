@@ -15,9 +15,23 @@
 	<build>
 		<resources>
 			<resource>
-				<directory>.</directory>
-				<excludes>pom.xml</excludes>
+				<directory>${basedir}</directory>
+				<excludes>
+					<exclude>pom.xml</exclude>
+					<exclude>target</exclude>
+				</excludes>
 			</resource>
 		</resources>
+		
+		<plugins>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+            			<manifestFile>${basedir}/META-INF/MANIFEST.MF</manifestFile>
+          			</archive>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 </project>

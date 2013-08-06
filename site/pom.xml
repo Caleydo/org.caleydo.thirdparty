@@ -5,11 +5,11 @@
 	<parent>
 		<groupId>org.caleydo.libs</groupId>
 		<artifactId>lib-parent</artifactId>
-		<version>1.0.0-SNAPSHOT</version>		
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>lib-site</artifactId>
 	<packaging>pom</packaging>
-	
+
 	<build>
 		<plugins>
 			<plugin>
@@ -18,7 +18,8 @@
 				<version>1.0.2-SNAPSHOT</version>
 				<executions>
 					<execution>
-						<id>default-cli</id>
+						<id>build-site</id>
+						<phase>verify</phase>
 						<configuration>
 							<artifacts>
 								<artifact>
@@ -26,7 +27,7 @@
 									<source>true</source>
 								</artifact>
 								<artifact>
-									<id>org.caleydo:pathvisio:${pathvisio.version}</id>
+									<id>org.caleydo.thirdparty:pathvisio:${pathvisio.version}</id>
 								</artifact>
 								<artifact>
 									<id>com.jogamp:gluegen-rt:${jogl.version}</id>
@@ -66,17 +67,9 @@
 								<artifact><id>com.jogamp:joal:windows-i586-${jogl.version}</id></artifact> -->
 							</artifacts>
 						</configuration>
-
 					</execution>
 				</executions>
 			</plugin>
 		</plugins>
 	</build>
-
-	<pluginRepositories>
-		<pluginRepository>
-			<id>zenlambda-releases</id>
-			<url>http://mvn-repo.zenlambda.com/releases</url>
-		</pluginRepository>
-	</pluginRepositories>
 </project>
