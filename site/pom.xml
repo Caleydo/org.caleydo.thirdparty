@@ -34,7 +34,7 @@
 						<artifact>
 							<id>org.jogamp.gluegen:gluegen-rt:jar:natives-linux-amd64:${jogl.version}</id>
 							<instructions>
-								<Bundle-SymbolicName>org.jogamp.gluegen.rt.natives-linux-amd64</Bundle-SymbolicName>
+								<Bundle-SymbolicName>org.jogamp.gluegen.rt-natives-linux-amd64</Bundle-SymbolicName>
 								<Fragment-Host>org.jogamp.gluegen.rt;bundle-version=&quot;${jogl.version}&quot;</Fragment-Host>
 								<Eclipse-PlatformFilter>(&amp; (osgi.os=linux) (osgi.arch=x86_64))</Eclipse-PlatformFilter>
 								<Bundle-NativeCode>libgluegen-rt.so</Bundle-NativeCode>
@@ -43,7 +43,7 @@
 						<artifact>
 							<id>org.jogamp.gluegen:gluegen-rt:jar:natives-linux-i586:${jogl.version}</id>
 							<instructions>
-								<Bundle-SymbolicName>org.jogamp.gluegen.rt.natives-linux-i586</Bundle-SymbolicName>
+								<Bundle-SymbolicName>org.jogamp.gluegen.rt-natives-linux-i586</Bundle-SymbolicName>
 								<Fragment-Host>org.jogamp.gluegen.rt;bundle-version=&quot;${jogl.version}&quot;</Fragment-Host>
 								<Eclipse-PlatformFilter>(&amp; (osgi.os=linux) (osgi.arch=x86))</Eclipse-PlatformFilter>
 								<Bundle-NativeCode>libgluegen-rt.so</Bundle-NativeCode>
@@ -52,7 +52,7 @@
 						<artifact>
 							<id>org.jogamp.gluegen:gluegen-rt:jar:natives-macosx-universal:${jogl.version}</id>
 							<instructions>
-								<Bundle-SymbolicName>org.jogamp.gluegen.rt.natives-macosx-universal</Bundle-SymbolicName>
+								<Bundle-SymbolicName>org.jogamp.gluegen.rt-natives-macosx-universal</Bundle-SymbolicName>
 								<Fragment-Host>org.jogamp.gluegen.rt;bundle-version=&quot;${jogl.version}&quot;</Fragment-Host>
 								<Eclipse-PlatformFilter>(&amp; (osgi.os=macosx) (osgi.arch=x86_64))</Eclipse-PlatformFilter>
 								<Bundle-NativeCode>libgluegen-rt.jnilib</Bundle-NativeCode>
@@ -61,7 +61,7 @@
 						<artifact>
 							<id>org.jogamp.gluegen:gluegen-rt:jar:natives-windows-amd64:${jogl.version}</id>
 							<instructions>
-								<Bundle-SymbolicName>org.jogamp.gluegen.rt.natives-windows-amd64</Bundle-SymbolicName>
+								<Bundle-SymbolicName>org.jogamp.gluegen.rt-natives-windows-amd64</Bundle-SymbolicName>
 								<Fragment-Host>org.jogamp.gluegen.rt;bundle-version=&quot;${jogl.version}&quot;</Fragment-Host>
 								<Eclipse-PlatformFilter>(&amp; (osgi.os=win32) (osgi.arch=x86_64))</Eclipse-PlatformFilter>
 								<Bundle-NativeCode>gluegen-rt.dll</Bundle-NativeCode>
@@ -70,7 +70,7 @@
 						<artifact>
 							<id>org.jogamp.gluegen:gluegen-rt:jar:natives-windows-i586:${jogl.version}</id>
 							<instructions>
-								<Bundle-SymbolicName>org.jogamp.gluegen.rt.natives-windows-i586</Bundle-SymbolicName>
+								<Bundle-SymbolicName>org.jogamp.gluegen.rt-natives-windows-i586</Bundle-SymbolicName>
 								<Fragment-Host>org.jogamp.gluegen.rt;bundle-version=&quot;${jogl.version}&quot;</Fragment-Host>
 								<Eclipse-PlatformFilter>(&amp; (osgi.os=win32) (osgi.arch=x86))</Eclipse-PlatformFilter>
 								<Bundle-NativeCode>gluegen-rt.dll</Bundle-NativeCode>
@@ -88,46 +88,46 @@
 						<artifact>
 							<id>org.jogamp.jogl:jogl-all:jar:natives-linux-amd64:${jogl.version}</id>
 							<instructions>
-								<Bundle-SymbolicName>org.jogamp.jogl.all.natives-linux-amd64</Bundle-SymbolicName>
+								<Bundle-SymbolicName>org.jogamp.jogl.all-natives-linux-amd64</Bundle-SymbolicName>
 								<Fragment-Host>org.jogamp.jogl.all;bundle-version=&quot;${jogl.version}&quot;</Fragment-Host>
 								<Eclipse-PlatformFilter>(&amp; (osgi.os=linux) (osgi.arch=x86_64))</Eclipse-PlatformFilter>
-								<Bundle-NativeCode>libjogl_desktop.so,libnativewindow_awt.so,libnativewindow_x11.so,libnewt.so</Bundle-NativeCode>
+								<Bundle-NativeCode>libjogl_desktop.so,libjogl_mobile.so,libnativewindow_awt.so,libnativewindow_x11.so,libnewt.so</Bundle-NativeCode>
 							</instructions>
 						</artifact>
 						<artifact>
 							<id>org.jogamp.jogl:jogl-all:jar:natives-linux-i586:${jogl.version}</id>
 							<instructions>
-								<Bundle-SymbolicName>org.jogamp.jogl.all.natives-linux-i586</Bundle-SymbolicName>
+								<Bundle-SymbolicName>org.jogamp.jogl.all-natives-linux-i586</Bundle-SymbolicName>
 								<Fragment-Host>org.jogamp.jogl.all;bundle-version=&quot;${jogl.version}&quot;</Fragment-Host>
 								<Eclipse-PlatformFilter>(&amp; (osgi.os=linux) (osgi.arch=x86))</Eclipse-PlatformFilter>
-								<Bundle-NativeCode>libjogl_desktop.so,libnativewindow_awt.so,libnativewindow_x11.so,libnewt.so</Bundle-NativeCode>
+								<Bundle-NativeCode>libjogl_desktop.so,libjogl_mobile.so,libnativewindow_awt.so,libnativewindow_x11.so,libnewt.so</Bundle-NativeCode>
 							</instructions>
 						</artifact>
 						<artifact>
 							<id>org.jogamp.jogl:jogl-all:jar:natives-macosx-universal:${jogl.version}</id>
 							<instructions>
-								<Bundle-SymbolicName>org.jogamp.jogl.all.natives-macosx-universal</Bundle-SymbolicName>
+								<Bundle-SymbolicName>org.jogamp.jogl.all-natives-macosx-universal</Bundle-SymbolicName>
 								<Fragment-Host>org.jogamp.jogl.all;bundle-version=&quot;${jogl.version}&quot;</Fragment-Host>
 								<Eclipse-PlatformFilter>(&amp; (osgi.os=macosx) (osgi.arch=x86_64))</Eclipse-PlatformFilter>
-								<Bundle-NativeCode>libjogl_desktop.jnilib,libnativewindow_awt.jnilib,libnativewindow_macosx.jnilib,libnewt.jnilib</Bundle-NativeCode>
+								<Bundle-NativeCode>libjogl_desktop.jnilib,libjogl_mobile.jnilib,libnativewindow_awt.jnilib,libnativewindow_macosx.jnilib,libnewt.jnilib</Bundle-NativeCode>
 							</instructions>
 						</artifact>
 						<artifact>
 							<id>org.jogamp.jogl:jogl-all:jar:natives-windows-amd64:${jogl.version}</id>
 							<instructions>
-								<Bundle-SymbolicName>org.jogamp.jogl.all.natives-windows-amd64</Bundle-SymbolicName>
+								<Bundle-SymbolicName>org.jogamp.jogl.all-natives-windows-amd64</Bundle-SymbolicName>
 								<Fragment-Host>org.jogamp.jogl.all;bundle-version=&quot;${jogl.version}&quot;</Fragment-Host>
 								<Eclipse-PlatformFilter>(&amp; (osgi.os=win32) (osgi.arch=x86_64))</Eclipse-PlatformFilter>
-								<Bundle-NativeCode>jogl_desktop.dll,nativewindow_awt.dll,nativewindow_win32.dll,newt.dll</Bundle-NativeCode>
+								<Bundle-NativeCode>jogl_desktop.dll,jogl_mobile.dll,nativewindow_awt.dll,nativewindow_win32.dll,newt.dll</Bundle-NativeCode>
 							</instructions>
 						</artifact>
 						<artifact>
 							<id>org.jogamp.jogl:jogl-all:jar:natives-windows-i586:${jogl.version}</id>
 							<instructions>
-								<Bundle-SymbolicName>org.jogamp.jogl.all.natives-windows-i586</Bundle-SymbolicName>
+								<Bundle-SymbolicName>org.jogamp.jogl.all-natives-windows-i586</Bundle-SymbolicName>
 								<Fragment-Host>org.jogamp.jogl.all;bundle-version=&quot;${jogl.version}&quot;</Fragment-Host>
 								<Eclipse-PlatformFilter>(&amp; (osgi.os=win32) (osgi.arch=x86))</Eclipse-PlatformFilter>
-								<Bundle-NativeCode>jogl_desktop.dll,nativewindow_awt.dll,nativewindow_win32.dll,newt.dll</Bundle-NativeCode>
+								<Bundle-NativeCode>jogl_desktop.dll,jogl_mobile.dll,nativewindow_awt.dll,nativewindow_win32.dll,newt.dll</Bundle-NativeCode>
 							</instructions>
 						</artifact>
 						<!-- <artifact> <id>org.jogamp.jocl:jocl:${jogl.version}</id> <source>true</source> 

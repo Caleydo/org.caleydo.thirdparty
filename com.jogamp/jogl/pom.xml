@@ -5,11 +5,24 @@
 	<parent>
 		<groupId>com.jogamp</groupId>
 		<artifactId>parent</artifactId>
-		<version>2.0.2</version>		
+		<version>2.0.2</version>
 	</parent>
 	<groupId>com.jogamp</groupId>
 	<artifactId>jogl</artifactId>
 	<packaging>jar</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.jogamp.jogl</groupId>
+			<artifactId>jogl-all</artifactId>
+			<version>${jogl.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jogamp.gluegen</groupId>
+			<artifactId>gluegen-rt</artifactId>
+			<version>${jogl.version}</version>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<plugins>
@@ -24,15 +37,30 @@
 							<target>
 								<property name="includes" value="*jogl_desktop.*,*nativewindow*,*newt*" />
 								<property name="includesjar" value="jogl-all.jar" />
-								<property name="excludepackages" value="**/jogamp/nativewindow/**,jogamp/opengl/**,jogamp/newt/driver/**" />
-								<property name="required.bundles" value="${project.groupId}.gluegen-rt;bundle-version=&quot;${project.version}&quot;;visibility:=reexport,org.eclipse.swt;bundle-version=&quot;3.102.0&quot;;resolution:=optional" /><!--for swt binding-->
-								<ant antfile="../build.xml" inheritAll="true" inheritRefs="true"/>
-								<attachartifact file="${project.build.directory}/${project.groupId}.${project.artifactId}-sources.jar" classifier="sources"/>
-	    						<attachartifact file="${project.build.directory}/${project.groupId}.${project.artifactId}-linux-amd64.jar" classifier="linux-amd64"/>
-	    						<attachartifact file="${project.build.directory}/${project.groupId}.${project.artifactId}-linux-i586.jar" classifier="linux-i586"/>
-	    						<attachartifact file="${project.build.directory}/${project.groupId}.${project.artifactId}-macosx-universal.jar" classifier="macosx-universal"/>
-	    						<attachartifact file="${project.build.directory}/${project.groupId}.${project.artifactId}-windows-amd64.jar" classifier="windows-amd64"/>
-	    						<attachartifact file="${project.build.directory}/${project.groupId}.${project.artifactId}-windows-i586.jar" classifier="windows-i586"/>
+								<property name="excludepackages"
+									value="**/jogamp/nativewindow/**,jogamp/opengl/**,jogamp/newt/driver/**" />
+								<property name="required.bundles"
+									value="${project.groupId}.gluegen-rt;bundle-version=&quot;${project.version}&quot;;visibility:=reexport,org.eclipse.swt;bundle-version=&quot;3.102.0&quot;;resolution:=optional" /><!--for 
+									swt binding -->
+								<ant antfile="../build.xml" inheritAll="true" inheritRefs="true" />
+								<attachartifact
+									file="${project.build.directory}/${project.groupId}.${project.artifactId}-sources.jar"
+									classifier="sources" />
+								<attachartifact
+									file="${project.build.directory}/${project.groupId}.${project.artifactId}-linux-amd64.jar"
+									classifier="linux-amd64" />
+								<attachartifact
+									file="${project.build.directory}/${project.groupId}.${project.artifactId}-linux-i586.jar"
+									classifier="linux-i586" />
+								<attachartifact
+									file="${project.build.directory}/${project.groupId}.${project.artifactId}-macosx-universal.jar"
+									classifier="macosx-universal" />
+								<attachartifact
+									file="${project.build.directory}/${project.groupId}.${project.artifactId}-windows-amd64.jar"
+									classifier="windows-amd64" />
+								<attachartifact
+									file="${project.build.directory}/${project.groupId}.${project.artifactId}-windows-i586.jar"
+									classifier="windows-i586" />
 							</target>
 						</configuration>
 						<goals>
@@ -45,10 +73,28 @@
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
 					<archive>
-            			<manifestFile>${project.build.directory}/package/META-INF/MANIFEST.MF</manifestFile>
-          			</archive>
+						<manifestFile>${project.build.directory}/package/META-INF/MANIFEST.MF</manifestFile>
+					</archive>
 					<classesDirectory>${project.build.directory}/package</classesDirectory>
 				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<descriptors>
+						<descriptor>../withgluegen.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
