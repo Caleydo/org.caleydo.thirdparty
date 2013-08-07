@@ -35,7 +35,7 @@
 		<attribute name="osfilter" />
 		<attribute name="archfilter" />
 		<sequential>
-			<pathconvert property="${base}-@{os}-@{arch}.native" pathsep=",\">
+			<pathconvert property="@{os}-@{arch}.native" pathsep=",\">
 				<fileset dir="${data.dir}/lib/@{os}-@{arch}" includes="${includes}" />
 				<flattenmapper />
 			</pathconvert>
@@ -48,7 +48,7 @@
 					<attribute name="Fragment-Host" value="${org}.${base};bundle-version=&quot;${version}&quot;" />
 					<attribute name="Bundle-RequiredExecutionEnvironment" value="JavaSE-1.7" />
 					<attribute name="Eclipse-PlatformFilter" value="(&amp; (osgi.os=@{osfilter}) (osgi.arch=@{archfilter}))" />
-					<attribute name="Bundle-NativeCode" value="${${base}-@{os}-@{arch}.native}" />
+					<attribute name="Bundle-NativeCode" value="${@{os}-@{arch}.native}" />
 				</manifest>
 				<mappedresources>
 					<fileset dir="${data.dir}/lib/@{os}-@{arch}" includes="${includes}" />
