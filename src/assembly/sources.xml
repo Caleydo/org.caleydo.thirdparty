@@ -13,10 +13,9 @@
 			<outputDirectory>/</outputDirectory>
 			<useProjectArtifact>false</useProjectArtifact>
 			<unpack>true</unpack>
-			<scope>runtime</scope>
+			<scope>test</scope>
 			<includes>
-				<include>org.jogamp.gluegen:*:*:sources</include>
-				<include>org.jogamp.${project.artifactId}:*:*:sources</include>
+				<include>*:*:*:sources</include>
 			</includes>
 		</dependencySet>
 	</dependencySets>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     06.08.2013 10:34:31                                                        
+
+     project    
+     description
+                   
+     Samuel Gratzl                                                                
+     ====================================================================== -->
+<project name="project" default="inject">
+	<description>
+            description
+    </description>
+
+	<property name="org" value="${project.groupId}" />
+	<property name="base" value="${project.artifactId}" />
+	<property name="version" value="${project.version}" />
+	
+	<property name="target.dir" location="${project.build.directory}" />
+	<mkdir dir="${target.dir}" />
+
+	<!-- = = = = = = = = = = = = = = = = =
+          macrodef: generate          
+         = = = = = = = = = = = = = = = = = -->
+	<macrodef name="injectnative">
+		<attribute name="os" />
+		<attribute name="arch" />
+		<attribute name="osfilter" />
+		<attribute name="archfilter" />
+		<sequential>
+			<unzip dest="${target.dir}/tmp" src="${target.dir}/${base}-${version}-natives-@{os}-@{arch}.jar">
+				<patternset>
+					<include name="*.dll" />
+					<include name="*.so" />
+					<include name="*.jnilib" />
+				</patternset>
+			</unzip>
+			<pathconvert property="@{os}-@{arch}.native" pathsep=",">
+				<fileset dir="${target.dir}/tmp" />
+				<flattenmapper />
+			</pathconvert>
+			<delete dir="${target.dir}/tmp" />
+			<jar destfile="${target.dir}/${base}-${version}-natives-@{os}-@{arch}.jar" update="true">
+				<manifest>
+					<attribute name="Bundle-ManifestVersion" value="2" />
+					<attribute name="Bundle-Name" value="${org}.${base}-natives-@{os}-@{arch}" />
+					<attribute name="Bundle-SymbolicName" value="${org}.${base}-natives-@{os}-@{arch}" />
+					<attribute name="Bundle-Version" value="${version}" />
+					<attribute name="Fragment-Host" value="${org}.${base};bundle-version=&quot;${version}&quot;" />
+					<attribute name="Bundle-RequiredExecutionEnvironment" value="JavaSE-1.7" />
+					<attribute name="Eclipse-PlatformFilter" value="(&amp; (osgi.os=@{osfilter}) (osgi.arch=@{archfilter}))" />
+					<attribute name="Bundle-NativeCode" value="${@{os}-@{arch}.native}" />
+				</manifest>
+			</jar>
+		</sequential>
+	</macrodef>
+						
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: inject-sources                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="inject-sources">
+		<jar destfile="${target.dir}/${base}-${version}-sources.jar" update="true">
+			<manifest>
+				<attribute name="Bundle-ManifestVersion" value="2" />
+				<attribute name="Bundle-Name" value="${org}.${base}.sources" />
+				<attribute name="Bundle-SymbolicName" value="${org}.${base}.sources" />
+				<attribute name="Bundle-Version" value="${version}" />
+				<attribute name="Eclipse-SourceBundle" value="${org}.${base};version=&quot;${version}&quot;;roots:=&quot;.&quot;" />
+			</manifest>
+		</jar>
+    </target>
+	
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: inject-natives                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="inject-natives">
+    	<injectnative os="linux" arch="amd64" osfilter="linux" archfilter="x86_64" />
+		<injectnative os="linux" arch="i586" osfilter="linux" archfilter="x86" />
+		<injectnative os="macosx" arch="universal" osfilter="macosx" archfilter="x86_64" />
+		<injectnative os="windows" arch="amd64" osfilter="win32" archfilter="x86_64" />
+		<injectnative os="windows" arch="i586" osfilter="win32" archfilter="x86" />    
+    </target>
+
+
+	<target name="inject" depends="inject-sources, inject-natives" />
+</project>

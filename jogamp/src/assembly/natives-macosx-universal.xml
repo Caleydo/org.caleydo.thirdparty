@@ -2,7 +2,7 @@
 	xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0 http://maven.apache.org/xsd/assembly-1.1.0.xsd">
-	<id>natives-windows-i586</id>
+	<id>natives-macosx-universal</id>
 	<formats>
 		<format>jar</format>
 	</formats>
@@ -12,10 +12,9 @@
 			<outputDirectory>/</outputDirectory>
 			<useProjectArtifact>false</useProjectArtifact>
 			<unpack>true</unpack>
-			<scope>runtime</scope>
+			<scope>test</scope>
 			<includes>
-				<include>org.jogamp.gluegen:*:*:natives-windows-i586</include>
-				<include>org.jogamp.${project.artifactId}:*:*:natives-windows-i586</include>
+				<include>*:*:*:natives-macosx-universal</include>
 			</includes>
 		</dependencySet>
 	</dependencySets>

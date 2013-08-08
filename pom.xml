@@ -2,8 +2,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.caleydo.libs</groupId>
-	<artifactId>lib-parent</artifactId>
+	<groupId>org.caleydo.thirdparty</groupId>
+	<artifactId>parent</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
@@ -13,19 +13,24 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<pathvisio.version>31.0.0</pathvisio.version>
 		<jogl.version>2.0.2</jogl.version>
-		<jgrapht.version>0.8.3</jgrapht.version>
 		<skipTests>true</skipTests>
 	</properties>
-	
-	<modules>
-		<module>org.jogamp.withgluegen</module>
-		<module>pathvisio</module>
-		<module>site</module>
-	</modules>
 
-	<build>	
+	<modules>
+		<module>jogamp</module>
+		<module>pathvisio</module>
+		<module>jgrapht</module>
+	</modules>
+	
+	<distributionManagement>
+		<repository>
+			<id>caleydo-thirdparty</id>
+			<url>http://dev.caleydo.org/nexus/content/repositories/thirdparty</url>
+		</repository>
+	</distributionManagement>
+
+	<build>
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -49,10 +54,15 @@
 							<version>2.1.3</version>
 						</dependency>
 					</dependencies>
-				</plugin>					
+				</plugin>
 				<plugin>
 					<artifactId>maven-jar-plugin</artifactId>
 					<version>2.4</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.felix</groupId>
+					<artifactId>maven-bundle-plugin</artifactId>
+					<version>2.3.7</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>

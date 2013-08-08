@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.caleydo.thirdparty</groupId>
+		<artifactId>jogamp-parent</artifactId>
+		<version>2.0.2</version>
+	</parent>
+	<artifactId>jogl</artifactId>
+	<packaging>bundle</packaging>
+
+	<properties>
+		<jogl.artifactId>jogl-all</jogl.artifactId>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.jogamp.${project.artifactId}</groupId>
+			<artifactId>${jogl.artifactId}</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jogamp.${project.artifactId}</groupId>
+			<artifactId>${jogl.artifactId}</artifactId>
+			<version>${project.version}</version>
+			<classifier>sources</classifier>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jogamp.${project.artifactId}</groupId>
+			<artifactId>${jogl.artifactId}</artifactId>
+			<version>${project.version}</version>
+			<classifier>natives-linux-amd64</classifier>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jogamp.${project.artifactId}</groupId>
+			<artifactId>${jogl.artifactId}</artifactId>
+			<version>${project.version}</version>
+			<classifier>natives-linux-i586</classifier>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jogamp.${project.artifactId}</groupId>
+			<artifactId>${jogl.artifactId}</artifactId>
+			<version>${project.version}</version>
+			<classifier>natives-macosx-universal</classifier>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jogamp.${project.artifactId}</groupId>
+			<artifactId>${jogl.artifactId}</artifactId>
+			<version>${project.version}</version>
+			<classifier>natives-windows-amd64</classifier>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jogamp.${project.artifactId}</groupId>
+			<artifactId>${jogl.artifactId}</artifactId>
+			<version>${project.version}</version>
+			<classifier>natives-windows-i586</classifier>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Require-Bundle>org.eclipse.swt;bundle-version=&quot;3.102.0&quot;;resolution:=optional</Require-Bundle>
+						<_nouses>true</_nouses><!-- don't use the uses clause -->
+						<Export-Package>*</Export-Package>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

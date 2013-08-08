@@ -1,2 +1,5 @@
 target
 jogamp-all-platforms
+.project
+.settings
+.classpath

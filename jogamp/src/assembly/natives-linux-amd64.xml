@@ -12,10 +12,9 @@
 			<outputDirectory>/</outputDirectory>
 			<useProjectArtifact>false</useProjectArtifact>
 			<unpack>true</unpack>
-			<scope>runtime</scope>
+			<scope>test</scope>
 			<includes>
-				<include>org.jogamp.gluegen:*:*:natives-linux-amd64</include>
-				<include>org.jogamp.${project.artifactId}:*:*:natives-linux-amd64</include>
+				<include>*:*:*:natives-linux-amd64</include>
 			</includes>
 		</dependencySet>
 	</dependencySets>
