@@ -22,11 +22,23 @@
 			<artifactId>gluegen-rt</artifactId>
 			<version>${jogl.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.jogamp.jogl</groupId>
+			<artifactId>jogl-all</artifactId>
+			<version>${jogl.version}</version>
+			<classifier>sources</classifier>
+		</dependency>
+		<dependency>
+			<groupId>org.jogamp.gluegen</groupId>
+			<artifactId>gluegen-rt</artifactId>
+			<version>${jogl.version}</version>
+			<classifier>sources</classifier>
+		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
-			<plugin>
+			<!-- <plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<version>1.7</version>
 				<executions>
@@ -40,12 +52,12 @@
 								<property name="excludepackages"
 									value="**/jogamp/nativewindow/**,jogamp/opengl/**,jogamp/newt/driver/**" />
 								<property name="required.bundles"
-									value="${project.groupId}.gluegen-rt;bundle-version=&quot;${project.version}&quot;;visibility:=reexport,org.eclipse.swt;bundle-version=&quot;3.102.0&quot;;resolution:=optional" /><!--for 
-									swt binding -->
+									value="${project.groupId}.gluegen-rt;bundle-version=&quot;${project.version}&quot;;visibility:=reexport,org.eclipse.swt;bundle-version=&quot;3.102.0&quot;;resolution:=optional" />
 								<ant antfile="../build.xml" inheritAll="true" inheritRefs="true" />
 								<attachartifact
 									file="${project.build.directory}/${project.groupId}.${project.artifactId}-sources.jar"
 									classifier="sources" />
+								
 								<attachartifact
 									file="${project.build.directory}/${project.groupId}.${project.artifactId}-linux-amd64.jar"
 									classifier="linux-amd64" />
@@ -68,8 +80,8 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
-			<plugin>
+			</plugin> -->
+			<!-- <plugin>
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
 					<archive>
@@ -77,13 +89,14 @@
 					</archive>
 					<classesDirectory>${project.build.directory}/package</classesDirectory>
 				</configuration>
-			</plugin>
+			</plugin> -->
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<version>2.4</version>
 				<configuration>
 					<descriptors>
 						<descriptor>../withgluegen.xml</descriptor>
+						<descriptor>../withgluegen-sources.xml</descriptor>
 					</descriptors>
 				</configuration>
 				<executions>
