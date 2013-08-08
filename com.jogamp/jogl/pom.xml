@@ -3,94 +3,56 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.jogamp</groupId>
+		<groupId>org.jogamp.withgluegen</groupId>
 		<artifactId>parent</artifactId>
 		<version>2.0.2</version>
 	</parent>
-	<groupId>org.jogamp.withgluegen</groupId>
 	<artifactId>jogl</artifactId>
 	<packaging>jar</packaging>
+	
+	<properties>
+		<jogl.artifactId>jogl-all</jogl.artifactId>
+	</properties>
 
 	<dependencies>
 		<dependency>
-			<groupId>org.jogamp.jogl</groupId>
-			<artifactId>jogl-all</artifactId>
+			<groupId>org.jogamp.${project.artifactId}</groupId>
+			<artifactId>${jogl.artifactId}</artifactId>
 			<version>${jogl.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.jogamp.gluegen</groupId>
-			<artifactId>gluegen-rt</artifactId>
-			<version>${jogl.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jogamp.jogl</groupId>
-			<artifactId>jogl-all</artifactId>
+			<groupId>org.jogamp.${project.artifactId}</groupId>
+			<artifactId>${jogl.artifactId}</artifactId>
 			<version>${jogl.version}</version>
 			<classifier>sources</classifier>
 		</dependency>
 		<dependency>
-			<groupId>org.jogamp.gluegen</groupId>
-			<artifactId>gluegen-rt</artifactId>
-			<version>${jogl.version}</version>
-			<classifier>sources</classifier>
-		</dependency>
-		<dependency>
-			<groupId>org.jogamp.jogl</groupId>
-			<artifactId>jogl-all</artifactId>
+			<groupId>org.jogamp.${project.artifactId}</groupId>
+			<artifactId>${jogl.artifactId}</artifactId>
 			<version>${jogl.version}</version>
 			<classifier>natives-linux-amd64</classifier>
 		</dependency>
 		<dependency>
-			<groupId>org.jogamp.gluegen</groupId>
-			<artifactId>gluegen-rt</artifactId>
-			<version>${jogl.version}</version>
-			<classifier>natives-linux-amd64</classifier>
-		</dependency>
-		<dependency>
-			<groupId>org.jogamp.jogl</groupId>
-			<artifactId>jogl-all</artifactId>
+			<groupId>org.jogamp.${project.artifactId}</groupId>
+			<artifactId>${jogl.artifactId}</artifactId>
 			<version>${jogl.version}</version>
 			<classifier>natives-linux-i586</classifier>
 		</dependency>
 		<dependency>
-			<groupId>org.jogamp.gluegen</groupId>
-			<artifactId>gluegen-rt</artifactId>
-			<version>${jogl.version}</version>
-			<classifier>natives-linux-i586</classifier>
-		</dependency>
-		<dependency>
-			<groupId>org.jogamp.jogl</groupId>
-			<artifactId>jogl-all</artifactId>
+			<groupId>org.jogamp.${project.artifactId}</groupId>
+			<artifactId>${jogl.artifactId}</artifactId>
 			<version>${jogl.version}</version>
 			<classifier>natives-macosx-universal</classifier>
 		</dependency>
 		<dependency>
-			<groupId>org.jogamp.gluegen</groupId>
-			<artifactId>gluegen-rt</artifactId>
-			<version>${jogl.version}</version>
-			<classifier>natives-macosx-universal</classifier>
-		</dependency>
-		<dependency>
-			<groupId>org.jogamp.jogl</groupId>
-			<artifactId>jogl-all</artifactId>
+			<groupId>org.jogamp.${project.artifactId}</groupId>
+			<artifactId>${jogl.artifactId}</artifactId>
 			<version>${jogl.version}</version>
 			<classifier>natives-windows-amd64</classifier>
 		</dependency>
 		<dependency>
-			<groupId>org.jogamp.gluegen</groupId>
-			<artifactId>gluegen-rt</artifactId>
-			<version>${jogl.version}</version>
-			<classifier>natives-windows-amd64</classifier>
-		</dependency>
-		<dependency>
-			<groupId>org.jogamp.jogl</groupId>
-			<artifactId>jogl-all</artifactId>
-			<version>${jogl.version}</version>
-			<classifier>natives-windows-i586</classifier>
-		</dependency>
-		<dependency>
-			<groupId>org.jogamp.gluegen</groupId>
-			<artifactId>gluegen-rt</artifactId>
+			<groupId>org.jogamp.${project.artifactId}</groupId>
+			<artifactId>${jogl.artifactId}</artifactId>
 			<version>${jogl.version}</version>
 			<classifier>natives-windows-i586</classifier>
 		</dependency>
@@ -98,6 +60,30 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<descriptors>
+						<descriptor>../withgluegen.xml</descriptor>
+						<descriptor>../withgluegen-sources.xml</descriptor>
+						<descriptor>../withgluegen-natives-linux-amd64.xml</descriptor>
+						<descriptor>../withgluegen-natives-linux-i586.xml</descriptor>
+						<descriptor>../withgluegen-natives-macosx-universal.xml</descriptor>
+						<descriptor>../withgluegen-natives-windows-amd64.xml</descriptor>
+						<descriptor>../withgluegen-natives-windows-i586.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 			<!-- <plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<version>1.7</version>
@@ -150,30 +136,6 @@
 					<classesDirectory>${project.build.directory}/package</classesDirectory>
 				</configuration>
 			</plugin> -->
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.4</version>
-				<configuration>
-					<descriptors>
-						<descriptor>../withgluegen.xml</descriptor>
-						<descriptor>../withgluegen-sources.xml</descriptor>
-						<descriptor>../withgluegen-natives-linux-amd64.xml</descriptor>
-						<descriptor>../withgluegen-natives-linux-i586.xml</descriptor>
-						<descriptor>../withgluegen-natives-macosx-universal.xml</descriptor>
-						<descriptor>../withgluegen-natives-windows-amd64.xml</descriptor>
-						<descriptor>../withgluegen-natives-windows-i586.xml</descriptor>
-					</descriptors>
-				</configuration>
-				<executions>
-					<execution>
-						<id>make-assembly</id>
-						<phase>package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 	</build>
 </project>
