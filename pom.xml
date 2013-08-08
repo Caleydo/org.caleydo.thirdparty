@@ -20,7 +20,7 @@
 	</properties>
 	
 	<modules>
-		<module>com.jogamp</module>
+		<module>org.jogamp.withgluegen</module>
 		<module>pathvisio</module>
 		<module>site</module>
 	</modules>
