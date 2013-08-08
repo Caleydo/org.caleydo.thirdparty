@@ -2,8 +2,7 @@
 	xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0 http://maven.apache.org/xsd/assembly-1.1.0.xsd">
-	<!-- TODO: a jarjar format would be better -->
-	<id>withgluegen</id>
+	<id>natives-linux-i586</id>
 	<formats>
 		<format>jar</format>
 	</formats>
@@ -14,11 +13,10 @@
 			<useProjectArtifact>false</useProjectArtifact>
 			<unpack>true</unpack>
 			<scope>runtime</scope>
-			
 			<includes>
-				<include>org.jogamp.gluegen:*:*:</include>
-				<include>org.jogamp.jogl:*:*:</include>
-			</<includes>>
+				<include>org.jogamp.gluegen:*:*:natives-linux-i586</include>
+				<include>org.jogamp.jogl:*:*:natives-linux-i586</include>
+			</includes>
 		</dependencySet>
 	</dependencySets>
 </assembly>
