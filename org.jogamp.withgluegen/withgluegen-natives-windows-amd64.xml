@@ -15,7 +15,7 @@
 			<scope>runtime</scope>
 			<includes>
 				<include>org.jogamp.gluegen:*:*:natives-windows-amd64</include>
-				<include>org.jogamp.jogl:*:*:natives-windows-amd64</include>
+				<include>org.jogamp.${project.artifactId}:*:*:natives-windows-amd64</include>
 			</includes>
 		</dependencySet>
 	</dependencySets>

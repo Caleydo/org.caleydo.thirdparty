@@ -16,7 +16,7 @@
 			<scope>runtime</scope>
 			<includes>
 				<include>org.jogamp.gluegen:*:*:sources</include>
-				<include>org.jogamp.jogl:*:*:sources</include>
+				<include>org.jogamp.${project.artifactId}:*:*:sources</include>
 			</includes>
 		</dependencySet>
 	</dependencySets>

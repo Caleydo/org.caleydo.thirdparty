@@ -15,7 +15,7 @@
 			<scope>runtime</scope>
 			<includes>
 				<include>org.jogamp.gluegen:*:*:natives-windows-i586</include>
-				<include>org.jogamp.jogl:*:*:natives-windows-i586</include>
+				<include>org.jogamp.${project.artifactId}:*:*:natives-windows-i586</include>
 			</includes>
 		</dependencySet>
 	</dependencySets>

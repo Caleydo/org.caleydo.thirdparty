@@ -15,7 +15,7 @@
 			<scope>runtime</scope>
 			<includes>
 				<include>org.jogamp.gluegen:*:*:natives-macosx-universal</include>
-				<include>org.jogamp.jogl:*:*:natives-macosx-universal</include>
+				<include>org.jogamp.${project.artifactId}:*:*:natives-macosx-universal</include>
 			</includes>
 		</dependencySet>
 	</dependencySets>
