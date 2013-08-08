@@ -22,12 +22,16 @@
 		<module>pathvisio</module>
 		<module>jgrapht</module>
 	</modules>
-	
+
 	<distributionManagement>
 		<repository>
-			<id>caleydo-thirdparty</id>
+			<id>caleydo</id>
 			<url>http://dev.caleydo.org/nexus/content/repositories/thirdparty</url>
 		</repository>
+		<snapshotRepository>
+			<id>caleydo</id>
+			<url>http://dev.caleydo.org/nexus/content/repositories/snapshots</url>
+		</snapshotRepository>
 	</distributionManagement>
 
 	<build>
