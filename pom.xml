@@ -6,6 +6,9 @@
 	<artifactId>parent</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
+	<name>Caleydo Third Party Dependency OSGI bundler</name>
+	<description>project to bundle external dependencies, e.g. jogl</description>
+	<url>https://github.com/Caleydo/${project.groupId}</url>
 
 	<prerequisites>
 		<maven>3.0</maven>
@@ -22,9 +25,31 @@
 		<module>jgrapht</module>
 		<module>jogamp</module>
 		<module>pathvisio</module>
-		<!-- <module>feature</module>
-		<module>repository</module> -->
 	</modules>
+
+	<issueManagement>
+		<url>${project.url}/issues</url>
+		<system>GitHub Issues</system>
+	</issueManagement>
+
+	<licenses>
+		<license>
+			<name>BSD License</name>
+			<url>http://www.opensource.org/licenses/bsd-license.php</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<scm>
+		<url>{project.url}</url>
+		<connection>scm:git:git://github.com/Caleydo/${project.groupId}.git</connection>
+		<developerConnection>scm:git:git@github.com:Caleydo/${project.groupId}.git</developerConnection>
+	</scm>
+	
+	<ciManagement>
+		<system>Jenkins</system>
+		<url>http://dev.caleydo.org/jenkins/job/${project.groupId}</url>
+	</ciManagement>
 
 	<distributionManagement>
 		<repository>
@@ -48,13 +73,8 @@
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
 				<configuration>
-					<!-- <target>
-						<artifact>
-							<groupId>${project.groupId}</groupId>
-							<artifactId>targetdef</artifactId>
-							<version>${project.version}</version>
-						</artifact>
-					</target> -->
+					<!-- <target> <artifact> <groupId>${project.groupId}</groupId> <artifactId>targetdef</artifactId> 
+						<version>${project.version}</version> </artifact> </target> -->
 					<environments>
 						<environment>
 							<os>linux</os>
@@ -193,14 +213,6 @@
 			<id>caleydo-public-p2</id>
 			<url>http://dev.caleydo.org/nexus/content/repositories/public-p2</url>
 			<layout>p2</layout>
-		</pluginRepository>
-		<pluginRepository>
-			<id>zenlambda-releases</id>
-			<url>http://mvn-repo.zenlambda.com/releases</url>
-		</pluginRepository>
-		<pluginRepository>
-			<id>reficio</id>
-			<url>http://repo.reficio.org/maven/</url>
 		</pluginRepository>
 	</pluginRepositories>
 </project>
