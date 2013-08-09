@@ -80,7 +80,7 @@
 				<configuration>
 					<instructions>
 						<Export-Package>*</Export-Package>
-						<Import-Package>!com.touchgraph.*,!org.jgraph.*,*</Import-Package>
+						<Import-Package>*;resolution:=optional</Import-Package>
 					</instructions>					
 				</configuration>
 			</plugin>
