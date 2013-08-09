@@ -14,17 +14,16 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<tycho.version>0.18.1</tycho.version>
-		<tycho-extras.version>${tycho.version}</tycho-extras.version>
+		<tycho.extras.version>${tycho.version}</tycho.extras.version>
 		<skipTests>true</skipTests>
 	</properties>
 
 	<modules>
-		<!-- <module>jogamp</module>
-		<module>pathvisio</module>
 		<module>jgrapht</module>
-		 -->
-		<module>feature</module>
-		<!-- <module>site</module> -->
+		<module>jogamp</module>
+		<module>pathvisio</module>
+		<!-- <module>feature</module>
+		<module>repository</module> -->
 	</modules>
 
 	<distributionManagement>
@@ -49,9 +48,13 @@
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
 				<configuration>
-					<resolver>p2</resolver>
-					<!--<pomDependencies>consider</pomDependencies> -->
-					<ignoreTychoRepositories>true</ignoreTychoRepositories>
+					<!-- <target>
+						<artifact>
+							<groupId>${project.groupId}</groupId>
+							<artifactId>targetdef</artifactId>
+							<version>${project.version}</version>
+						</artifact>
+					</target> -->
 					<environments>
 						<environment>
 							<os>linux</os>
@@ -124,20 +127,13 @@
 					<groupId>org.eclipse.tycho</groupId>
 					<artifactId>tycho-packaging-plugin</artifactId>
 					<version>${tycho.version}</version>
-					<!-- <dependencies>
-						<dependency>
-							<groupId>org.eclipse.tycho.extras</groupId>
-							<artifactId>tycho-buildtimestamp-jgit</artifactId>
-							<version>${tycho-extras.version}</version>
-						</dependency>
-					</dependencies>
-					 -->
+					<!-- <dependencies> <dependency> <groupId>org.eclipse.tycho.extras</groupId> 
+						<artifactId>tycho-buildtimestamp-jgit</artifactId> <version>${tycho.extras.version}</version> 
+						</dependency> </dependencies> -->
 					<configuration>
 						<strictBinIncludes>false</strictBinIncludes>
 						<format>'v'yyyyMMdd-HHmm</format>
-						<!-- <timestampProvider>jgit</timestampProvider>
-						<jgit.ignore>
-						</jgit.ignore> -->
+						<!-- <timestampProvider>jgit</timestampProvider> <jgit.ignore> </jgit.ignore> -->
 					</configuration>
 				</plugin>
 				<plugin>
@@ -159,6 +155,16 @@
 					<groupId>org.eclipse.tycho</groupId>
 					<artifactId>tycho-versions-plugin</artifactId>
 					<version>${tycho.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho.extras</groupId>
+					<artifactId>tycho-source-feature-plugin</artifactId>
+					<version>${tycho.extras.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho.extras</groupId>
+					<artifactId>tycho-custom-bundle-plugin</artifactId>
+					<version>${tycho.extras.version}</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>

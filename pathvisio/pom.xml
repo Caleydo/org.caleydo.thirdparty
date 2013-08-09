@@ -7,29 +7,7 @@
 		<artifactId>parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>pathvisio</artifactId>
+	<artifactId>org.caleydo.thirdparty.pathvisio</artifactId>
 	<version>31.0.0</version>
-
-	<build>
-		<resources>
-			<resource>
-				<directory>${basedir}</directory>
-				<includes>
-					<include>jars/**</include>
-					<include>licenses/**</include>
-				</includes>
-			</resource>
-		</resources>
-		
-		<plugins>
-			<plugin>
-				<artifactId>maven-jar-plugin</artifactId>
-				<configuration>
-					<archive>
-            			<manifestFile>${basedir}/META-INF/MANIFEST.MF</manifestFile>
-          			</archive>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+	<packaging>eclipse-plugin</packaging>
 </project>
