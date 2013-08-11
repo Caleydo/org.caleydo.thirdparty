@@ -62,8 +62,8 @@
 		<jar destfile="${target.dir}/${base}-sources.jar" update="true">
 			<manifest>
 				<attribute name="Bundle-ManifestVersion" value="2" />
-				<attribute name="Bundle-Name" value="${org}.${base}.sources" />
-				<attribute name="Bundle-SymbolicName" value="${org}.${base}.sources" />
+				<attribute name="Bundle-Name" value="${org}.${base}.source" />
+				<attribute name="Bundle-SymbolicName" value="${org}.${base}.source" />
 				<attribute name="Bundle-Version" value="${version}" />
 				<attribute name="Eclipse-SourceBundle" value="${org}.${base};version=&quot;0.8.3&quot;;roots:=&quot;.&quot;" />
 			</manifest>
