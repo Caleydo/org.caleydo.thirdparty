@@ -77,6 +77,7 @@
 					<instructions>
 						<Export-Package>*</Export-Package>
 						<Import-Package>*;resolution:=optional</Import-Package>
+						<Require-Bundle>javax.annotation;bundle-version=&quot;1.1.0&quot;</Require-Bundle>
 					</instructions>
 				</configuration>
 			</plugin>
