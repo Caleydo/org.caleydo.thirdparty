@@ -21,13 +21,6 @@
 			<groupId>org.jogamp.gluegen</groupId>
 			<artifactId>gluegen-rt</artifactId>
 			<version>${project.version}</version>
-			<classifier>sources</classifier>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jogamp.gluegen</groupId>
-			<artifactId>gluegen-rt</artifactId>
-			<version>${project.version}</version>
 			<classifier>natives-linux-amd64</classifier>
 			<scope>test</scope>
 		</dependency>
@@ -69,7 +62,6 @@
 					<version>2.4</version>
 					<configuration>
 						<descriptors>
-							<descriptor>../../src/assembly/sources.xml</descriptor>
 							<descriptor>../src/assembly/natives-linux-amd64.xml</descriptor>
 							<descriptor>../src/assembly/natives-linux-i586.xml</descriptor>
 							<descriptor>../src/assembly/natives-macosx-universal.xml</descriptor>
@@ -88,6 +80,21 @@
 					</executions>
 				</plugin>
 				<plugin>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>unpack</id>
+							<phase>package</phase>
+							<goals>
+								<goal>unpack-dependencies</goal>
+							</goals>
+							<configuration>
+								<classifier>sources</classifier>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
 					<artifactId>maven-antrun-plugin</artifactId>
 					<executions>
 						<execution>
@@ -95,7 +102,43 @@
 							<phase>package</phase>
 							<configuration>
 								<target>
-									<ant antfile="../injectOSGI.xml" inheritAll="true" inheritRefs="true" />
+
+								</target>
+							</configuration>
+							<goals>
+								<goal>run</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>inject-osgi</id>
+							<phase>package</phase>
+							<configuration>
+								<target>
+									<jar
+										destfile="${project.build.directory}/${project.artifactId}-${project.version}-sources.jar">
+										<manifest>
+											<attribute name="Bundle-ManifestVersion" value="2" />
+											<attribute name="Bundle-Name"
+												value="${project.groupId}.${project.artifactId}.source" />
+											<attribute name="Bundle-SymbolicName"
+												value="${project.groupId}.${project.artifactId}.source" />
+											<attribute name="Bundle-Version" value="${project.version}" />
+											<attribute name="Eclipse-SourceBundle"
+												value="${project.groupId}.${project.artifactId};version=&quot;${project.version}&quot;;roots:=&quot;.&quot;" />
+										</manifest>
+										<fileset dir="${project.build.directory}/dependency" />
+									</jar>
+									<attachartifact
+										file="${project.build.directory}/${project.artifactId}-${project.version}-sources.jar"
+										classifier="sources" />
+
+									<ant antfile="../injectOSGI.xml" inheritAll="true"
+										inheritRefs="true" />
 								</target>
 							</configuration>
 							<goals>

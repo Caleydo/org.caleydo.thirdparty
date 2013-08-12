@@ -24,13 +24,6 @@
 			<groupId>org.jogamp.${project.artifactId}</groupId>
 			<artifactId>${jogl.artifactId}</artifactId>
 			<version>${project.version}</version>
-			<classifier>sources</classifier>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jogamp.${project.artifactId}</groupId>
-			<artifactId>${jogl.artifactId}</artifactId>
-			<version>${project.version}</version>
 			<classifier>natives-linux-amd64</classifier>
 			<scope>test</scope>
 		</dependency>
@@ -68,6 +61,9 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
 			</plugin>
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>

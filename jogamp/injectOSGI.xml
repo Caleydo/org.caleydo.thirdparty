@@ -54,22 +54,7 @@
 			</jar>
 		</sequential>
 	</macrodef>
-						
-	<!-- - - - - - - - - - - - - - - - - - 
-          target: inject-sources                      
-         - - - - - - - - - - - - - - - - - -->
-    <target name="inject-sources">
-		<jar destfile="${target.dir}/${base}-${version}-sources.jar" update="true">
-			<manifest>
-				<attribute name="Bundle-ManifestVersion" value="2" />
-				<attribute name="Bundle-Name" value="${org}.${base}.source" />
-				<attribute name="Bundle-SymbolicName" value="${org}.${base}.source" />
-				<attribute name="Bundle-Version" value="${version}" />
-				<attribute name="Eclipse-SourceBundle" value="${org}.${base};version=&quot;${version}&quot;;roots:=&quot;.&quot;" />
-			</manifest>
-		</jar>
-    </target>
-	
+							
 	<!-- - - - - - - - - - - - - - - - - - 
           target: inject-natives                      
          - - - - - - - - - - - - - - - - - -->
@@ -82,5 +67,5 @@
     </target>
 
 
-	<target name="inject" depends="inject-sources, inject-natives" />
+	<target name="inject" depends="inject-natives" />
 </project>
