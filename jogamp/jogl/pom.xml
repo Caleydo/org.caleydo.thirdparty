@@ -78,6 +78,7 @@
 						<_nouses>true</_nouses><!-- don't use the uses clause -->
 						<Export-Package>*</Export-Package>
 						<Import-Package>*;resolution:=optional</Import-Package>
+						<Eclipse-ExtensibleAPI>true</Eclipse-ExtensibleAPI><!-- to auto include matching fragments -->
 					</instructions>
 				</configuration>
 			</plugin>
