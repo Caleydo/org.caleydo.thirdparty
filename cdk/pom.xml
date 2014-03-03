@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.caleydo.thirdparty</groupId>
+		<artifactId>parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>cdk</artifactId>
+	<version>1.5.3</version>
+	<packaging>bundle</packaging>
+
+	<dependencies>
+		<!-- <dependency>	
+			<groupId>org.openscience.cdk</groupId>
+			<artifactId>jchempaint-all</artifactId>
+			<version>3.3-1210</version>
+			<type>pom</type>
+		</dependency>-->
+	
+		<dependency>	
+			<groupId>org.openscience.cdk</groupId>
+			<artifactId>cdk-renderawt</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>	
+			<groupId>org.openscience.cdk</groupId>
+			<artifactId>cdk-smiles</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>	
+			<groupId>org.openscience.cdk</groupId>
+			<artifactId>cdk-data</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>	
+			<groupId>org.openscience.cdk</groupId>
+			<artifactId>cdk-sdg</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>	
+			<groupId>org.openscience.cdk</groupId>
+			<artifactId>cdk-io</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>	
+	
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>unpack</id>
+						<phase>package</phase>
+						<goals>
+							<goal>unpack-dependencies</goal>
+						</goals>
+						<configuration>
+							<classifier>sources</classifier>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>inject-osgi</id>
+						<phase>package</phase>
+						<configuration>
+							<target>
+								<jar
+									destfile="${project.build.directory}/${project.artifactId}-${project.version}-sources.jar">
+									<manifest>
+										<attribute name="Bundle-ManifestVersion" value="2" />
+										<attribute name="Bundle-Name"
+											value="${project.groupId}.${project.artifactId}.source" />
+										<attribute name="Bundle-SymbolicName"
+											value="${project.groupId}.${project.artifactId}.source" />
+										<attribute name="Bundle-Version" value="${project.version}" />
+										<attribute name="Eclipse-SourceBundle"
+											value="${project.groupId}.${project.artifactId};version=&quot;${project.version}&quot;;roots:=&quot;.&quot;" />
+									</manifest>
+									<fileset dir="${project.build.directory}/dependency" />
+								</jar>
+								<attachartifact file="${project.build.directory}/${project.artifactId}-${project.version}-sources.jar" classifier="sources" />
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Export-Package>org.openscience.cdk.*</Export-Package>
+						<Private-Package>*</Private-Package>
+						<Import-Package>*;resolution:=optional</Import-Package>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<repositories>
+		<repository>
+			<id>cdk</id>
+			<url>http://ambit.uni-plovdiv.bg:8083/nexus/content/groups/public/</url>
+		</repository>
+	</repositories>
+</project>
