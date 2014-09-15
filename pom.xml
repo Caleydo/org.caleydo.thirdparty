@@ -27,6 +27,7 @@
 		<module>pathvisio</module>
 		<module>jsr305</module>
 		<module>cdk</module>
+		<module>commons-math</module>
 	</modules>
 
 	<issueManagement>
